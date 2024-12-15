@@ -1,0 +1,25 @@
+namespace: monitoring
+
+image:
+  repository: prom/prometheus
+  tag: "v3.0.1"
+
+service:
+  type: ClusterIP
+  port: 9090
+
+configMap:
+  prometheusYml: |
+    global:
+      scrape_interval: 15s
+
+    scrape_configs:
+      - job_name: 'springboot'
+        metrics_path: /actuator/prometheus
+        static_configs:
+          - targets: ['springboot-service.app-dev.svc.cluster.local:8080']
+
+      - job_name: 'postgres'
+        static_configs:
+          - targets: ['postgres-exporter-service.monitoring.svc.cluster.local:9187']
+

@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-exporter
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres-exporter
+  template:
+    metadata:
+      labels:
+        app: postgres-exporter
+    spec:
+      containers:
+      - name: postgres-exporter
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        args:
+          - --config.file=/etc/postgres_exporter/postgres_exporter.yml
+        ports:
+        - containerPort: {{ .Values.service.port }}
+        env:
+          - name: DATA_SOURCE_NAME
+            value: "postgres://{{ .Values.postgres.user }}:{{ .Values.postgres.password }}@{{ .Values.postgres.host }}:{{ .Values.postgres.port }}/{{ .Values.postgres.dbname }}?sslmode=disable"
+        volumeMounts:
+          - name: postgres-exporter-config
+            mountPath: /etc/postgres_exporter
+            subPath: postgres_exporter.yml
+      volumes:
+        - name: postgres-exporter-config
+          configMap:
+            name: postgres-exporter-config

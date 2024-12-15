@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: react-config
+  namespace: app-dev
+data:
+  backendUrl: {{ .Values.backendUrl }}/api

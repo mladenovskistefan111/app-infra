@@ -1,0 +1,21 @@
+namespace: monitoring
+
+image:
+  repository: bitnami/postgres-exporter
+  tag: "0.16.0"
+
+service:
+  type: ClusterIP
+  port: 9187
+
+postgres:
+  user: postgres
+  password: password
+  host: postgres-service.app-dev.svc.cluster.local
+  port: 5432
+  dbname: book_shop
+
+config:
+  stat_bgwriter: false
+  stat_activity: true
+  stat_database: true

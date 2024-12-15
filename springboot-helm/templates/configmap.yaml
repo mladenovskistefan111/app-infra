@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: springboot-config
+  namespace: {{ .Values.namespace }}
+data:
+  databaseUrl: {{ .Values.configmap.databaseUrl }}

@@ -1,0 +1,14 @@
+namespace: app-dev
+
+image:
+  repository: postgres
+  tag: "17"
+
+service:
+  type: ClusterIP
+  port: 5432
+
+postgres:
+  db: book_shop
+  user: postgres
+  password: password

@@ -1,0 +1,11 @@
+namespace: app-dev
+
+image:
+  repository: mladenovskistefan/app-react
+  tag: "v1.0.1"
+
+service:
+  type: ClusterIP
+  port: 3000
+
+backendUrl: "http://springboot.local"

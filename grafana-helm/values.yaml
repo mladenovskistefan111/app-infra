@@ -1,0 +1,12 @@
+namespace: monitoring
+
+image:
+  repository: grafana/grafana
+  tag: "11.4.0"
+
+service:
+  type: ClusterIP
+  port: 3001
+
+prometheus:
+  url: http://prometheus-service.monitoring.svc.cluster.local:9090
