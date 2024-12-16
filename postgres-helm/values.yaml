@@ -10,5 +10,5 @@ service:
 
 postgres:
   db: book_shop
-  user: postgres
-  password: password
+  username: placeholder-username
+  password: placeholder-password

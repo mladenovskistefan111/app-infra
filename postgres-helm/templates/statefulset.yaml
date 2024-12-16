@@ -23,7 +23,10 @@ spec:
         - name: POSTGRES_DB
           value: "{{ .Values.postgres.db }}"
         - name: POSTGRES_USER
-          value: "{{ .Values.postgres.user }}"
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secret
+              key: username
         - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:

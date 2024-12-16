@@ -11,6 +11,6 @@ service:
 configmap:
   databaseUrl: "jdbc:postgresql://postgres-service:5432/book_shop"
 
-secret:
-  username: postgres
-  password: password
+database:
+  username: placeholder-username
+  password: placeholder-password
