@@ -2,7 +2,7 @@ namespace: app-dev
 
 image:
   repository: mladenovskistefan/app-react
-  tag: "v1.0.1"
+  tag: "latest"
 
 service:
   type: ClusterIP
