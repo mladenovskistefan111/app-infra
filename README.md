@@ -30,7 +30,7 @@ cd app-infra
 
 ### Deploy the Application and Monitoring Stack
 ```sh
-helm install postgre ./postgres-helm -n app-dev
+helm install postgres ./postgres-helm -n app-dev
 helm install springboot ./springboot-helm -n app-dev
 helm install react ./react-helm -n app-dev
 helm install prometheus ./springboot-helm -n monitoring
@@ -89,12 +89,24 @@ Example:
 10.97.123.214   grafana.local
 10.97.123.214   argocd.local
 ```
+After all the steps are done, the application can be accessed on react.local, localy.
+At argocd.local, ArgoCD can be accessed and here you can add the url of the infra repo and add all the helm charts to have CD.
+At grafana.local, you can create custom Dashboards for metrics that you want to track for the application.
 
 ## Summary
 - This repo contains Helm charts for deploying a React/Spring Boot/PostgreSQL application with monitoring.
 - CI/CD pipeline is managed with Jenkins, exposed using Ngrok.
 - ArgoCD and Nginx Ingress Controller are installed using Helm.
 - The Ingress Controller requires updating `/etc/hosts` with the assigned external IP.
+
+## Deployment Considerations
+This deployment is intended for local development and testing purposes, demonstrating the integration of various DevOps tools and practices. While it serves as a valuable learning project, it may not be suitable for production environments due to several factors:
+
+- **Security**: Secrets management is simplified and should ideally use dedicated solutions like HashiCorp Vault or AWS Secrets Manager for secure storage.
+- **Networking**: The setup does not include public DNS or SSL certificates, making it inaccessible over the internet. This limits its use in real-world applications where secure, reliable access is crucial.
+- **Scalability**: The deployment is designed for a local environment and may require additional configurations for scaling, resilience, and high availability in production.
+Overall, this project provides a solid foundation for practicing and enhancing your DevOps skills, showcasing the deployment of a full-stack application with monitoring capabilities and CI/CD processes.
+
 
 ### Author
 **Stefan Mladenovski** - DevOps Enthusiast
