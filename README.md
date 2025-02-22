@@ -20,6 +20,11 @@ This repository contains Helm charts for deploying a full-stack application cons
 - **ArgoCD:** Installed using the default Helm chart.
 - **Nginx Ingress Controller:** Installed using the official Helm chart.
 
+### Source Code Repositories
+- The code for the **React frontend** can be found in the [React Repository](https://github.com/mladenovskistefan111/app-react).
+- The code for the **Spring Boot backend** can be found in the [Spring Boot Repository](https://github.com/mladenovskistefan111/app-springboot).
+- Each repository contains its respective **Jenkinsfile** for the CI pipeline setup.
+
 ## Deployment Instructions
 
 ### Clone the Repository
